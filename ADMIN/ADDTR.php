@@ -26,7 +26,7 @@ input[type=submit].a1:hover {
 session_start();
 if(isset($_SESSION['uid']))
 		{
-			include('HEADERS\ADMINHEADER.php');		
+			include('./HEADERS/ADMINHEADER.php');		
 		}
 	else
 		{
@@ -36,7 +36,7 @@ if(isset($_SESSION['uid']))
     </script>
     <?php
 		}
-include('HEADERS\CONNECTION.php');
+include('./HEADERS/CONNECTION.php');
 ?>
 <HTML>
 <link rel="stylesheet"  href="../CSS/SEARCHBOX.CSS">
@@ -50,7 +50,7 @@ include('HEADERS\CONNECTION.php');
 <INPUT TYPE="EMAIL" NAME="GG" required PLACEHOLDER="EMAIL-ID"><BR>
 <INPUT TYPE="SUBMIT" NAME="SUB"VALUE="OK">
 <?php
-			include('HEADERS\BOTTOMHEADER2.php');
+			include('./HEADERS/BOTTOMHEADER2.php');
 		?>
 </FORM>
 </CENTER>
@@ -58,15 +58,15 @@ include('HEADERS\CONNECTION.php');
 </html>
 
 <?php
-include('HEADERS\CONNECTION.php');
+include('./HEADERS/CONNECTION.php');
 if(isset($_POST['SUB']))
 {
 $TID=$_POST['TID'];
 $AM=$_POST['AM'];
 $GMAIL=$_POST['GG'];
-$link = mysqli_connect("localhost", "root", "", "example") or die("Couldn't connect");
+//$link = mysqli_connect("localhost", "root", "", "example") or die("Couldn't connect");
 $query33="SELECT * FROM `transaction` WHERE TID='$TID'";
-$result=mysqli_query($link, $query33);
+$result=mysqli_query($conn, $query33);
 $row=mysqli_num_rows($result);
 if($row  >0)
 {
@@ -78,7 +78,7 @@ if($row  >0)
 	}
 else{
 	$qry="INSERT INTO `transaction`(`TID`, `PRICE`, `GMAIL`) VALUES ('$TID','$AM','$GMAIL')";
-	if(mysqli_query($link, $qry))
+	if(mysqli_query($conn, $qry))
 	{
 		?>
 		<script>

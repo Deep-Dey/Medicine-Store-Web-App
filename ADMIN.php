@@ -32,8 +32,8 @@ if(isset($_SESSION['uid']))
     </script>
     <?php 
 		}
-		include('HEADERS\CONNECTION.php');
-		include('HEADERS\HEADER.php');
+		include('./HEADERS/CONNECTION.php');
+		include('./HEADERS/HEADER.php');
 ?>
 <HTML>
 <link rel="stylesheet"  href="CSS/SEARCHBOX.CSS">
@@ -54,14 +54,14 @@ if(isset($_SESSION['uid']))
 </body>
 </html>
 <?php
-include('CONNECTION.php');
+include('./HEADERS/CONNECTION.php');
 if(isset($_POST['SUB']))
 {
 $l=$_POST['LUID'];
 $p=$_POST['LPW'];
-$link = mysqli_connect("localhost", "root", "", "example") or die("Couldn't connect");
+//$link = mysqli_connect("localhost", "root", "", "example") or die("Couldn't connect");
 $query1="select UID,PASSWORD from admin where UID='".$l."' and PASSWORD='".$p."'";
-$result=mysqli_query($link, $query1);
+$result=mysqli_query($conn, $query1);
 $row=mysqli_num_rows($result);
 if($row  <1)
 {
@@ -81,7 +81,7 @@ else
 		header('location:ADMIN\INDEX.php');
 	}
 }
-include('HEADERS\BOTTOMHEADER2.php');
+include('./HEADERS/BOTTOMHEADER2.php');
 ?>
 <script>
 function password() {

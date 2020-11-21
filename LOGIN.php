@@ -34,8 +34,8 @@ if(isset($_SESSION['gmail']))
 		}
 ?>
 <?php
-include('HEADERS\CONNECTION.php');
-include('HEADERS\HEADER.php');
+include('./HEADERS/CONNECTION.php');
+include('./HEADERS/HEADER.php');
 ?>
 <HTML>
 <link rel="stylesheet"  href="CSS/SEARCHBOX.CSS">
@@ -64,16 +64,16 @@ include('HEADERS\HEADER.php');
 </body>
 </html>
 <?php
-			include('HEADERS\BOTTOMHEADER2.php');
-			include('HEADERS\CONNECTION.php');
+			include('./HEADERS/BOTTOMHEADER2.php');
+			include('./HEADERS/CONNECTION.php');
 		
 if(isset($_POST['SUB']))
 {
 $l=$_POST['LUID'];
 $p=$_POST['LPW'];
-$link = mysqli_connect("localhost", "root", "", "example") or die("Couldn't connect");
+//$link = mysqli_connect("localhost", "root", "", "example") or die("Couldn't connect");
 $query3="select PASSWORD,GMAIL from reg where GMAIL='".$l."' and PASSWORD='".$p."'";
-$result=mysqli_query($link, $query3);
+$result=mysqli_query($conn, $query3);
 $row=mysqli_num_rows($result);
 if($row  <1)
 {

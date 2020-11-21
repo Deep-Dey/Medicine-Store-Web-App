@@ -3,7 +3,7 @@ session_start();
 if(isset($_SESSION['gmail']))
 		{
 			$temp=$_SESSION['gmail'];
-			include('HEADERS\HEADERL.php');
+			include('./HEADERS/HEADERL.php');
 		}
 		else{
 			?>
@@ -32,7 +32,7 @@ if(isset($_SESSION['gmail']))
         <p><a href="ACCDETAILS.php"><font color="#FF0000">SEE ACCOUNT DETAILS</font></a></p><br>
         <p>*WE HOPE THAT Y0U WILL GET A GOOD EXPERIENCE*</p></center>
 		<?php
-			include('HEADERS\BOTTOMHEADER2.php');
+			include('./HEADERS/BOTTOMHEADER2.php');
 		?>
 </FORM>		
 </table>
@@ -42,7 +42,7 @@ if(isset($_SESSION['gmail']))
 <?php
 if(isset($_POST['SUB']))
 {
-include('CONNECTION.php');
+include('./HEADERS/CONNECTION.php');
 $b=$_POST['UN'];
 $p1=$_POST['PW'];
 $p2=$_POST['CPW'];
@@ -53,9 +53,9 @@ if((!(strcmp($p1,$p2))))
 {
 	if(strlen($phn)==10){
 	if(strlen($p1)>7){
-	$link = mysqli_connect("localhost", "root", "", "example") or die("Couldn't connect");
+	//$link = mysqli_connect("localhost", "root", "", "example") or die("Couldn't connect");
 	$query="UPDATE `reg` SET `UNAME`='$b',`PASSWORD`='$p1',`GENDER`='$gender',`PH`='$phn' WHERE GMAIL='$temp'";
-	if(mysqli_query($link, $query))
+	if(mysqli_query($conn, $query))
 	{	
 		?>
 	<script>

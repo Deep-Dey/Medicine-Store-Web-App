@@ -2,7 +2,7 @@
 session_start();
 if(isset($_SESSION['gmail']))
 		{
-			include('HEADERS\HEADERL.php');			
+			include('./HEADERS/HEADERL.php');			
 		}
 	else
 		{
@@ -12,7 +12,7 @@ if(isset($_SESSION['gmail']))
     </script>
     <?php
 		}
-include('HEADERS\CONNECTION.php');
+include('./HEADERS/CONNECTION.php');
 $GMAIL=$_SESSION['gmail'];
 ?>
 <HTML>
@@ -26,10 +26,10 @@ $GMAIL=$_SESSION['gmail'];
 	      </p>
 		  <table width="35%" border="1" align="center" cellpadding="4" cellspacing="0">
   <?php
-        include('HEADERS\CONNECTION.php');
-        $link = mysqli_connect("localhost", "root", "", "example") or die("Couldn't connect");
+        include('./HEADERS/CONNECTION.php');
+        //$link = mysqli_connect("localhost", "root", "", "example") or die("Couldn't connect");
 				$query6="Select * from address where GMAIL='".$GMAIL."'";
-				$result= mysqli_query($link, $query6);
+				$result= mysqli_query($conn, $query6);
 				$row_value= mysqli_fetch_array($result);
 				?>
 		    <tr>
@@ -67,5 +67,5 @@ $GMAIL=$_SESSION['gmail'];
 </body>
 </html>
 <?php
-include('HEADERS\BOTTOMHEADER2.php');
+include('./HEADERS/BOTTOMHEADER2.php');
 ?>

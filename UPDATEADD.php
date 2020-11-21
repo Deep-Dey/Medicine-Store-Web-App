@@ -1,10 +1,10 @@
 <?php
 session_start();
-include('HEADERS\CONNECTION.php');
+include('./HEADERS/CONNECTION.php');
 $temp=$_SESSION['gmail'];
 if(isset($_SESSION['gmail']))
 		{
-			include('HEADERS\HEADERL.php');		
+			include('./HEADERS/HEADERL.php');		
 		}
 	else
 		{
@@ -32,7 +32,7 @@ if(isset($_SESSION['gmail']))
 		    <p><a href="SHOWAD.php"><font color="#FF0000">VIEW ADDRESS</font></a></p><br>
 		    <p>*DELIVERY AVAILABLE ONLY FOR WEST BENGAL*</p></center>
 		<?php
-			include('HEADERS\BOTTOMHEADER2.php');
+			include('./HEADERS/BOTTOMHEADER2.php');
 		?>
 		</td>
       </tr>
@@ -50,9 +50,9 @@ $p1=$_POST['CITY'];
 $p2=$_POST['PC'];
 $g=$_POST['DISTRICT'];
 	if(strlen($p2)==6){
-$link = mysqli_connect("localhost", "root", "", "example") or die("Couldn't connect");
+//$link = mysqli_connect("localhost", "root", "", "example") or die("Couldn't connect");
 $query3="select * from address where GMAIL='".$temp."'";
-$result=mysqli_query($link, $query3);
+$result=mysqli_query($conn, $query3);
 $row=mysqli_num_rows($result);
 if($row  <1){
 	?>
@@ -64,7 +64,7 @@ if($row  <1){
 else
 	{
 	$query="UPDATE `address` SET  `ADDRESS`='$a',`LANDMARK`='$b',`CITY`='$p1',`PCODE`='$p2',`DISTRICT`='$g' WHERE GMAIL='$temp'";
-	if(mysqli_query($link, $query))
+	if(mysqli_query($conn, $query))
 	{	
 		?>
 	<script>

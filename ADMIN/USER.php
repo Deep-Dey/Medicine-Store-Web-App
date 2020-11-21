@@ -26,7 +26,7 @@ input[type=submit].a1:hover {
 session_start();
 if(isset($_SESSION['uid']))
 		{
-			include('HEADERS\ADMINHEADER.php');		
+			include('./HEADERS/ADMINHEADER.php');		
 		}
 	else
 		{
@@ -36,7 +36,7 @@ if(isset($_SESSION['uid']))
     </script>
     <?php
 		}
-include('HEADERS\CONNECTION.php');
+include('./HEADERS/CONNECTION.php');
 ?>
 <HTML>
 <link rel="stylesheet"  href="../CSS/SEARCHBOX.CSS">
@@ -52,5 +52,5 @@ include('HEADERS\CONNECTION.php');
 </body>
 </html>
 <?php
-include('HEADERS\BOTTOMHEADER2.php');
+include('./HEADERS/BOTTOMHEADER2.php');
 ?>

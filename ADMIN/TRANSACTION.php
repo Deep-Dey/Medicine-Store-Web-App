@@ -2,7 +2,7 @@
 session_start();
 if(isset($_SESSION['uid']))
 		{
-			include('HEADERS\ADMINHEADER.php');		
+			include('./HEADERS/ADMINHEADER.php');		
 		}
 	else
 		{
@@ -12,15 +12,15 @@ if(isset($_SESSION['uid']))
     </script>
     <?php
 		}
-include('HEADERS\CONNECTION.php');
+include('./HEADERS/CONNECTION.php');
 ?>
 <HTML>
 <body>
         		<?php 
-				include('HEADERS\CONNECTION.php');
-				$link = mysqli_connect("localhost", "root", "", "example") or die("Couldn't connect");
+				include('./HEADERS/CONNECTION.php');
+				//$link = mysqli_connect("localhost", "root", "", "example") or die("Couldn't connect");
 				$query2="Select * from transaction";
-				$result= mysqli_query($link, $query2);
+				$result= mysqli_query($conn, $query2);
 				$no_of_row= mysqli_num_rows($result);
 				?>
         <CENTER><FONT color="#666666" size="6">TOTAL NO OF TRANSACTIONS: <?php echo $no_of_row; ?></FONT>
@@ -57,5 +57,5 @@ include('HEADERS\CONNECTION.php');
 </body>
 </html>
 <?php
-include('HEADERS\BOTTOMHEADER2.php');
+include('./HEADERS/BOTTOMHEADER2.php');
 ?>

@@ -42,7 +42,7 @@ session_start();
 <?php
 if(isset($_SESSION['uid']))
 		{
-			include('HEADERS\ADMINHEADER.php');		
+			include('./HEADERS/ADMINHEADER.php');		
 		}
 	else
 		{
@@ -52,7 +52,7 @@ if(isset($_SESSION['uid']))
     </script>
     <?php
 		}
-include('HEADERS\CONNECTION.php');
+include('./HEADERS/CONNECTION.php');
 ?>
 <HTML>
 <link rel="stylesheet"  href="../CSS/SEARCHBOX.CSS">
@@ -75,7 +75,7 @@ include('HEADERS\CONNECTION.php');
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;add image<input type="file" name="IMAGE" id="IMAGE"><BR><BR>
 <INPUT TYPE="SUBMIT" NAME="SUB"VALUE="OK"></CENTER>
 		<?php
-			include('HEADERS\BOTTOMHEADER2.php');
+			include('./HEADERS/BOTTOMHEADER2.php');
 		?>
 		</td>
       </tr>
@@ -85,7 +85,7 @@ include('HEADERS\CONNECTION.php');
 </html>
 
 <?php
-include('HEADERS\CONNECTION.php');
+include('./HEADERS/CONNECTION.php');
 if(isset($_POST['SUB']))
 {
 $MNAME=$_POST['MNAME'];
@@ -94,17 +94,21 @@ $PRICE=$_POST['PRICE'];
 $QTY=$_POST['QTY'];
 $MFD=$_POST['MFD'];
 $EXP=$_POST['EXP'];
-$IMGNAME=$_FILES['IMAGE']['name'];
-$TEMPNAME=$_FILES['IMAGE']['tmp_name'];
+//$IMGNAME=$_FILES['IMAGE']['name'];
+//$TEMPNAME=$_FILES['IMAGE']['tmp_name'];
 $ID='QWERTYUIOPASDFGHJKLZXCVBNMqwertyuiopasdfghjklzxcvbnm0123456789';
-		$ID=str_shuffle($ID);
-		$ID=substr($ID, 0, 4);
+$ID=str_shuffle($ID);
+$ID=substr($ID, 0, 4);
 		
-move_uploaded_file($TEMPNAME,"DATAIMG/$IMGNAME");
-
-	$link = mysqli_connect("localhost", "root", "", "example") or die("Couldn't connect");
-	$qry="INSERT INTO `medicine`(`ID`, `MNAME`, `BNAME`, `PRICE`, `QTY`, `MFD`, `EXP`, `IMAGE`) VALUES ('$ID','$MNAME','$BNAME','$PRICE','$QTY','$MFD','$EXP','$IMGNAME')";
-	if(mysqli_query($link, $qry))
+//move_uploaded_file($TEMPNAME,"DATAIMG/$IMGNAME");
+if(isset($_FILES['IMAGE'])){
+    $file_name=$_FILES['IMAGE']['name'];
+    $file_temp=$_FILES['IMAGE']['tmp_name'];
+	move_uploaded_file($file_temp, "DATAIMG/". $file_name);
+	
+	//$link = mysqli_connect("localhost", "root", "", "example") or die("Couldn't connect");
+	$qry="INSERT INTO `medicine`(`ID`, `MNAME`, `BNAME`, `PRICE`, `QTY`, `MFD`, `EXP`, `IMAGE`) VALUES ('$ID','$MNAME','$BNAME','$PRICE','$QTY','$MFD','$EXP','$file_name')";
+	if(mysqli_query($conn, $qry))
 	{
 		?>
 		<script>
@@ -121,5 +125,8 @@ else
 		</script>
 		<?php
 	}
+}
+
+	
 }
 ?>

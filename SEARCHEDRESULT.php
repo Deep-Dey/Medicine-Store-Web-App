@@ -26,22 +26,22 @@ input[type=submit].a1:hover {
 session_start();
 if(isset($_SESSION['gmail']))
 		{
-			include('HEADERS\HEADERL.php');		
+			include('./HEADERS/HEADERL.php');		
 		}
 	else
 		{
-		include('HEADERS\HEADER.php');
+		include('./HEADERS/HEADER.php');
 		}
-include('HEADERS\CONNECTION.php');
+include('./HEADERS/CONNECTION.php');
 ?>
 <table border="0" align="center" cellpadding="5" cellspacing="5" width="100%" BGCOLOR="WHITE">
 <?php
 				
 				$SS=$_POST['SS'];
-        include('HEADERS\CONNECTION.php');
-        $link = mysqli_connect("localhost", "root", "", "example") or die("Couldn't connect");
+        include('./HEADERS/CONNECTION.php');
+        //$link = mysqli_connect("localhost", "root", "", "example") or die("Couldn't connect");
 				$query2="Select * from medicine where MNAME like '$SS%' OR BNAME like '$SS%'";
-				$result=mysqli_query($link, $query2) or die("Couldn't connect");
+				$result=mysqli_query($conn, $query2) or die("Couldn't connect");
 				$no_of_row= mysqli_num_rows($result);
 				for($i=0;$i<$no_of_row;$i++)
 				{
@@ -81,5 +81,5 @@ include('HEADERS\CONNECTION.php');
 </body>
 </html>
 <?php
-include('HEADERS\BOTTOMHEADER2.php');
+include('./HEADERS/BOTTOMHEADER2.php');
 ?>

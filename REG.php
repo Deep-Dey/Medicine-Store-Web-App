@@ -34,7 +34,7 @@ if(isset($_SESSION['gmail']))
 		}
 ?>
 <?php
-include('HEADERS\HEADER.php');
+include('./HEADERS/HEADER.php');
 ?>
 <HTML>
 <link rel="stylesheet"  href="CSS/SEARCHBOX.CSS">
@@ -53,7 +53,7 @@ include('HEADERS\HEADER.php');
             <INPUT TYPE="SUBMIT" NAME="SUB"VALUE="OK">&nbsp; &nbsp;&nbsp; &nbsp;<br>
             <p>*WE HOPE THAT YOU WILL GET A GOOD EXPERIENCE*&nbsp; &nbsp;&nbsp; &nbsp;</p></center>
 		<?php
-			include('HEADERS\BOTTOMHEADER2.php');
+			include('./HEADERS/BOTTOMHEADER2.php');
 		?>
 		
 </table>
@@ -63,7 +63,7 @@ include('HEADERS\HEADER.php');
 <?php
 if(isset($_POST['SUB']))
 {
-include('CONNECTION.php');
+include('./HEADERS/CONNECTION.php');
 $b=$_POST['UN'];
 $p1=$_POST['PW'];
 $p2=$_POST['CPW'];
@@ -76,9 +76,9 @@ if((!(strcmp($p1,$p2))) && (!(strcmp($g,$s))))
 {
 	if(strlen($phn)==10){
 	if(strlen($p1)>7){
-$link = mysqli_connect("localhost", "root", "", "example") or die("Couldn't connect");
+//$link = mysqli_connect("localhost", "root", "", "example") or die("Couldn't connect");
 $query3="select GMAIL from reg where GMAIL='".$g."'";
-$result=mysqli_query($link, $query3);
+$result=mysqli_query($conn, $query3);
 $row=mysqli_num_rows($result);
 if($row  >0)
 {
@@ -94,7 +94,7 @@ else
 	{
 		
 	$query="INSERT INTO `reg`(`UNAME`, `PASSWORD`, `GMAIL`, `GENDER`, `PH`) VALUES ('$b','$p1','$g','$gender','$phn')";
-	if(mysqli_query($link, $query))
+	if(mysqli_query($conn, $query))
 	{	
 		?>
 	<script>

@@ -1,10 +1,10 @@
 <?php
 session_start();
-include('HEADERS\CONNECTION.php');
+include('./HEADERS/CONNECTION.php');
 $temp=$_SESSION['gmail'];
-$link = mysqli_connect("localhost", "root", "", "example") or die("Couldn't connect");
+//$link = mysqli_connect("localhost", "root", "", "example") or die("Couldn't connect");
 $query8="select PCODE from address where GMAIL='".$temp."'";
-$result=mysqli_query($link, $query8);
+$result=mysqli_query($conn, $query8);
 $row=mysqli_num_rows($result);
 if($row  >0)
 {
@@ -17,7 +17,7 @@ if($row  >0)
 else{
 if(isset($_SESSION['gmail']))
 		{
-			include('HEADERS\HEADERL.php');			
+			include('./HEADERS/HEADERL.php');			
 		}
 	else
 		{
@@ -44,7 +44,7 @@ if(isset($_SESSION['gmail']))
 		    <p>*DELIVERY AVAILABLE ONLY FOR WEST BENGAL*</p>
 	      <p>&nbsp;</p></center>
 		<?php
-			include('HEADERS\BOTTOMHEADER2.php');
+			include('./HEADERS/BOTTOMHEADER2.php');
 		?>
 </FORM>
 </body>
@@ -60,15 +60,15 @@ $p2=$_POST['PC'];
 $g=$_POST['DISTRICT'];
 	if(strlen($p2)==6){
 $temp=$_SESSION['gmail'];
-$link = mysqli_connect("localhost", "root", "", "example") or die("Couldn't connect");
+//$link = mysqli_connect("localhost", "root", "", "example") or die("Couldn't connect");
 $query3="select * from address where GMAIL='".$temp."'";
-$result=mysqli_query($link, $query3);
-$row=mysqli_num_rows($link, $result);
+$result=mysqli_query($conn, $query3);
+$row=mysqli_num_rows($conn, $result);
 if($row  >0){}
 else
 	{
 	$query="INSERT INTO `address`(`GMAIL`, `ADDRESS`, `LANDMARK`, `CITY`, `PCODE`, `DISTRICT`) VALUES ('$temp','$a','$b','$p1','$p2','$g')";
-	if(mysqli_query($link, $query))
+	if(mysqli_query($conn, $query))
 	{	
 		?>
 	<script>

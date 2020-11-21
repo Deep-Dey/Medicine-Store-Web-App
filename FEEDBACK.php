@@ -26,13 +26,13 @@ input[type=submit].a1:hover {
 session_start();
 if(isset($_SESSION['gmail']))
 		{
-			include('HEADERS\HEADERL.php');			
+			include('./HEADERS/HEADERL.php');			
 		}
 	else
 		{
-			include('HEADERS\HEADER.php');
+			include('./HEADERS/HEADER.php');
 		}
-include('HEADERS\CONNECTION.php');
+include('./HEADERS/CONNECTION.php');
 ?>
 <HTML>
 <link rel="stylesheet"  href="CSS/SEARCHBOX.CSS">
@@ -54,9 +54,9 @@ $name=$_POST['NM'];
 $email=$_POST['EM'];
 $feedback=$_POST['FEEDBACK'];
 
-	$link = mysqli_connect("localhost", "root", "", "example") or die("Couldn't connect");
+	//$link = mysqli_connect("localhost", "root", "", "example") or die("Couldn't connect");
     $query6="INSERT INTO feedback(NAME,EMAIL,FEEDBACK) VALUES('$name','$email','$feedback')";
-	$result=mysqli_query($link, $query6) or die("Couldn't connect");
+	$result=mysqli_query($conn, $query6) or die("Couldn't connect");
 	if($result==TRUE)
 		{
         echo"<br>THANK YOU FOR YOUR FEEDBACK";
@@ -70,6 +70,6 @@ $feedback=$_POST['FEEDBACK'];
 
 </html>
 <?php
-include('HEADERS\BOTTOMHEADER2.php');
+include('./HEADERS/BOTTOMHEADER2.php');
 ?>
 

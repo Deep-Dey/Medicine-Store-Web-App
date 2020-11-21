@@ -1,6 +1,6 @@
 <?php
 session_start();
-include('HEADERS\CONNECTION.php');
+include('./HEADERS/CONNECTION.php');
 if(!(isset($_SESSION['gmail'])))
 		{
 			?>
@@ -18,15 +18,15 @@ $OID='QWERTYUIOPASDFGHJKLZXCVBNMqwertyuiopasdfghjklzxcvbnm0123456789';
 		$OID=str_shuffle($OID);
 		$OID=substr($OID, 0, 6);
 
-    $link = mysqli_connect("localhost", "root", "", "example") or die("Couldn't connect");
+    //$link = mysqli_connect("localhost", "root", "", "example") or die("Couldn't connect");
 $query94="Select * from reg where `GMAIL`='$email'";
-				$result= mysqli_query($link, $query94);
+				$result= mysqli_query($conn, $query94);
 				$no_of_row= mysqli_num_rows($result);
 				$row_value= mysqli_fetch_array($result);				
 $nm=$row_value['UNAME'];
 				
 $query22="Select * from `order` where OID='$OID'";
-				$result= mysqli_query($link, $query22);
+				$result= mysqli_query($conn, $query22);
 				$row=mysqli_num_rows($result);
 				
 if($row  >0)
@@ -36,13 +36,13 @@ if($row  >0)
 else
 {
 $query2="Select * from medicine where `ID`='$bb'";
-				$result= mysqli_query($link, $query2);
+				$result= mysqli_query($conn, $query2);
 				$no_of_row= mysqli_num_rows($result);
 				$row_value= mysqli_fetch_array($result);				
 $p=$row_value['PRICE'];
 $t=$p+10;
 $qry="INSERT INTO `order`(`OID`, `GMAIL`, `BID`, `AMMOUNT`) VALUES ('$OID','$email','$bb','$p')";
-if(mysqli_query($link, $qry))
+if(mysqli_query($conn, $qry))
 	{
 		?>
 		<script>

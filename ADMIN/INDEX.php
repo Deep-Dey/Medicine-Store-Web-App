@@ -3,7 +3,7 @@
 session_start();
 if(isset($_SESSION['uid']))
 		{
-			include('HEADERS\ADMINHEADER.php');		
+			include('./HEADERS/ADMINHEADER.php');		
 		}
 	else
 		{
@@ -13,12 +13,12 @@ if(isset($_SESSION['uid']))
     </script>
     <?php
 		}
-include('HEADERS\CONNECTION.php');
+include('./HEADERS/CONNECTION.php');
 ?><HTML>
 <body link="white" vlink="#FFFFFF">
 <?php
-include('HEADERS\GALLERY.php');
-include('HEADERS\BOTTOMHEADER.php');
+include('./HEADERS/GALLERY.php');
+include('./HEADERS/BOTTOMHEADER.php');
 ?>
 </body>
 </html>

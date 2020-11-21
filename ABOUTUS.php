@@ -2,13 +2,13 @@
 session_start();
 if(isset($_SESSION['gmail']))
 		{
-			include('HEADERS\HEADERL.php');		
+			include('./HEADERS/HEADERL.php');		
 		}
 	else
 		{
-			include('HEADERS\HEADER.php');
+			include('./HEADERS/HEADER.php');
 		}
-include('HEADERS\CONNECTION.php');
+include('./HEADERS/CONNECTION.php');
 ?>
 <HTML>
 <body>
@@ -45,7 +45,7 @@ Instead of placing repeated orders for required medicines, you can subscribe to 
 </body>
 </html>
 <?php
-include('HEADERS\BOTTOMHEADER2.php');
+include('./HEADERS/BOTTOMHEADER2.php');
 ?>
 
 

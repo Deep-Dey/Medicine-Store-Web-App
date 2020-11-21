@@ -26,7 +26,7 @@ input[type=submit].a1:hover {
 session_start();
 if(isset($_SESSION['uid']))
 		{
-			include('HEADERS\ADMINHEADER.php');		
+			include('./HEADERS/ADMINHEADER.php');		
 		}
 	else
 		{
@@ -36,14 +36,14 @@ if(isset($_SESSION['uid']))
     </script>
     <?php
 		}
-include('HEADERS\CONNECTION.php');
+include('./HEADERS/CONNECTION.php');
 ?>
 <table border="0" align="center" cellpadding="5" cellspacing="5" width="100%" BGCOLOR="WHITE">
 <?php
         $SS=$_POST['SS'];
-        $link = mysqli_connect("localhost", "root", "", "example") or die("Couldn't connect");
+        //$link = mysqli_connect("localhost", "root", "", "example") or die("Couldn't connect");
 				$query2="Select * from medicine where MNAME like '$SS%' OR BNAME like '$SS%'";
-				$result= mysqli_query($link, $query2);
+				$result= mysqli_query($conn, $query2);
 				$no_of_row= mysqli_num_rows($result);
 				for($i=0;$i<$no_of_row;$i++)
 				{
@@ -89,7 +89,7 @@ include('HEADERS\CONNECTION.php');
   </tr>
   <tr>
     <?php
-			include('HEADERS\BOTTOMHEADER2.php');
+			include('./HEADERS/BOTTOMHEADER2.php');
 		?> 
   </tr>
 </table>

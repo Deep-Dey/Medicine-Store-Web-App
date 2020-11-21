@@ -1,11 +1,11 @@
 <?php
 session_start();
-include('HEADERS\CONNECTION.php');
+include('./HEADERS/CONNECTION.php');
 $GMAIL=$_POST['GG'];
 
-        $link = mysqli_connect("localhost", "root", "", "example") or die("Couldn't connect");
+        //$link = mysqli_connect("localhost", "root", "", "example") or die("Couldn't connect");
 				$query6="Select * from reg where GMAIL='".$GMAIL."'";
-				$result= mysqli_query($link, $query6);
+				$result= mysqli_query($conn, $query6);
 				$row_value= mysqli_fetch_array($result);
 				$row=mysqli_num_rows($result);
 if($row  <1)
@@ -21,7 +21,7 @@ else
 {
 ?>
 <?php
-include('HEADERS\ADMINHEADER.php');	
+include('./HEADERS/ADMINHEADER.php');	
 ?>
 <HTML>
 <body><center>
@@ -52,9 +52,9 @@ include('HEADERS\ADMINHEADER.php');
     </table>
 <table width="50%" border="1" cellpadding="4" cellspacing="0">
 <?php
-				include('HEADERS\CONNECTION.php');
+				include('./HEADERS/CONNECTION.php');
 				$query6="Select * from address where GMAIL='".$GMAIL."'";
-				$result= mysqli_query($link, $query6);
+				$result= mysqli_query($conn, $query6);
 				$row_value= mysqli_fetch_array($result);
 				?>
   <tr>
@@ -86,5 +86,5 @@ include('HEADERS\ADMINHEADER.php');
 
 <?php
 }
-include('HEADERS\BOTTOMHEADER2.php');
+include('./HEADERS/BOTTOMHEADER2.php');
 ?>

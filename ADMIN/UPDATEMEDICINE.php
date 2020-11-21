@@ -38,7 +38,7 @@ input[type=submit].a1:hover {
 session_start();
 if(isset($_SESSION['uid']))
 		{
-			include('HEADERS\ADMINHEADER.php');		
+			include('./HEADERS/ADMINHEADER.php');		
 		}
 	else
 		{
@@ -48,8 +48,7 @@ if(isset($_SESSION['uid']))
     </script>
     <?php
 		}
-include('HEADERS\CONNECTION.php');
-include('../connection.php');
+include('./HEADERS/CONNECTION.php');
 $ID=$_POST['ID'];
 ?>
 <HTML>
@@ -77,9 +76,9 @@ $ST=$_POST['ST'];
 $MFD=$_POST['MFD'];
 $EXP=$_POST['EXP'];
 $PR=$_POST['PR'];
-$link = mysqli_connect("localhost", "root", "", "example") or die("Couldn't connect");
+//$link = mysqli_connect("localhost", "root", "", "example") or die("Couldn't connect");
 $query33="SELECT * FROM `medicine` WHERE ID='$ID'";
-$result=mysqli_query($link, $query33);
+$result=mysqli_query($conn, $query33);
 $row=mysqli_num_rows($result);
 if($row  >0)
 {
@@ -88,7 +87,7 @@ if($row  >0)
 	$temp=$row_value['QTY'];
 	$St=$ST+$temp;
 	$qry11="UPDATE `medicine` SET `PRICE`='$PR',`QTY`='$St',`MFD`='$MFD',`EXP`='$EXP' WHERE ID='$ID'";
-	if(mysqli_query($link, $qry11))
+	if(mysqli_query($conn, $qry11))
 	{
 		?>
 	<script>
@@ -116,5 +115,5 @@ else
 	}
 }
 
-include('HEADERS\BOTTOMHEADER2.php');
+include('./HEADERS/BOTTOMHEADER2.php');
 ?>
